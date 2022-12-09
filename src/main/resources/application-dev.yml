@@ -1,0 +1,23 @@
+spring:
+  sql:
+    init:
+      platform: postgres
+      mode: always
+  datasource:
+    url: jdbc:postgresql://localhost:5433/appservice
+    username: postgres
+    password: orp101099
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: true
+    database: POSTGRESQL
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        #hbm2ddl:
+        #delimiter: ;
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
