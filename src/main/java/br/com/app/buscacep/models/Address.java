@@ -1,6 +1,7 @@
 package br.com.app.buscacep.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,10 +19,16 @@ public class Address implements Serializable {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
+    @Column(name = "street")
     private String street;
+    @Column(name = "district")
     private String district;
+    @Column(name = "complement")
     private String complement;
+    @Column(name = "number")
     private Integer number;
+    @Column(name = "postal_code")
+    @Pattern(regexp = "[0-9]{5}-[0-9]{3}")
     private String postalCode;
 
     @ManyToOne
