@@ -26,6 +26,12 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>-->
 		<dependency>
+			<!-- Spring Boot 3.0.0 dont need to add swagger ui dependencies and @EnableSwagger2 at mainClass -->
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.0.Final</version>

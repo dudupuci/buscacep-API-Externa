@@ -28,7 +28,16 @@ public class PersonService {
         } catch (Exception e) {
             throw new RuntimeException("err" + e.getMessage());
         }
+    }
 
+    public void updateAndSavePerson(UUID oldPersonId, Person newPerson) {
+        try {
+            Person oldPerson = repository.findById(oldPersonId).get();
+            updatePerson(oldPerson, newPerson);
+            repository.save(newPerson);
+        } catch (Exception err) {
+            throw new RuntimeException("");
+        }
     }
 
     public void deletePerson(UUID id) {
@@ -38,7 +47,16 @@ public class PersonService {
             throw new RuntimeException("");
 
         }
+    }
 
+    public void updatePerson(Person oldPerson, Person newPerson) {
+        oldPerson.setName(newPerson.getName());
+        oldPerson.setId(newPerson.getId());
+        oldPerson.setAge(newPerson.getAge());
+        oldPerson.setCpf(newPerson.getCpf());
+        oldPerson.setEmail(newPerson.getEmail());
+        oldPerson.setDateOfBirth(newPerson.getDateOfBirth());
+        oldPerson.setAddresses(newPerson.getAddresses());
     }
 
 }

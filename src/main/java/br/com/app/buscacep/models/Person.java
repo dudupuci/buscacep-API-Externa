@@ -35,7 +35,7 @@ public class Person implements Serializable {
     private Date dateOfBirth;
 
     @Column(name = "cpf", unique = true, length = 11)
-    @CPF(message = "Enter a valid CPF")
+    @CPF(message = "Enter a valid CPF", groups = CPF.class)
     private String cpf;
     @Email
     private String email;
