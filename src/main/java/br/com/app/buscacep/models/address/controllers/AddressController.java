@@ -1,9 +1,7 @@
-package br.com.app.buscacep.models.controllers;
+package br.com.app.buscacep.models.address.controllers;
 
-import br.com.app.buscacep.models.Address;
-import br.com.app.buscacep.models.Person;
-import br.com.app.buscacep.repositories.AddressRepository;
-import br.com.app.buscacep.services.AddressService;
+import br.com.app.buscacep.models.address.services.AddressService;
+import br.com.app.buscacep.models.address.entity.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +35,7 @@ public class AddressController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Void> update(@PathVariable UUID id, @RequestBody Address newAddress) {
         Address oldAddress = service.findById(id);
         service.updateAddress(oldAddress, newAddress);
@@ -45,7 +43,7 @@ public class AddressController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.deleteAddress(id);
         return ResponseEntity.noContent().build();

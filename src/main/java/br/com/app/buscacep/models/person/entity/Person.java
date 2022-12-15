@@ -1,15 +1,18 @@
-package br.com.app.buscacep.models;
+package br.com.app.buscacep.models.person.entity;
 
+import br.com.app.buscacep.models.address.entity.Address;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -23,19 +26,20 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @NotNull
     private UUID id;
     @NotEmpty(message = "Name cannot be null or empty.")
     @Column(name = "name")
     private String name;
     @Column(name = "age")
     private Integer age;
-    @PastOrPresent(message = "Birthdate cannot be future.")
-    @Column(name = "birthdate")
-    private Date dateOfBirth;
 
+    @Column(name = "registration_time")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
+    private LocalDateTime registrationTime = LocalDateTime.now();
     @Column(name = "cpf", unique = true, length = 11)
-    @CPF(message = "Enter a valid CPF", groups = CPF.class)
+    @CPF
+    @Size(min = 11, max = 11, message = "CPF inválido!")
     private String cpf;
     @Email
     private String email;

@@ -1,5 +1,6 @@
-package br.com.app.buscacep.models;
+package br.com.app.buscacep.models.address.entity;
 
+import br.com.app.buscacep.models.person.entity.Person;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 

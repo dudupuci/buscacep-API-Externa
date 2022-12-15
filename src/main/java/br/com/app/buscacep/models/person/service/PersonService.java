@@ -1,7 +1,7 @@
-package br.com.app.buscacep.services;
+package br.com.app.buscacep.models.person.service;
 
-import br.com.app.buscacep.models.Person;
-import br.com.app.buscacep.repositories.PersonRepository;
+import br.com.app.buscacep.models.person.entity.Person;
+import br.com.app.buscacep.models.person.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +55,6 @@ public class PersonService {
         oldPerson.setAge(newPerson.getAge());
         oldPerson.setCpf(newPerson.getCpf());
         oldPerson.setEmail(newPerson.getEmail());
-        oldPerson.setDateOfBirth(newPerson.getDateOfBirth());
         oldPerson.setAddresses(newPerson.getAddresses());
     }
 

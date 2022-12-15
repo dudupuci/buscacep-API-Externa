@@ -1,7 +1,7 @@
-package br.com.app.buscacep.services;
+package br.com.app.buscacep.models.address.services;
 
-import br.com.app.buscacep.models.Address;
-import br.com.app.buscacep.repositories.AddressRepository;
+import br.com.app.buscacep.models.address.entity.Address;
+import br.com.app.buscacep.models.address.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
