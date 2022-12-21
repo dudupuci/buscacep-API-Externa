@@ -45,20 +45,13 @@ public class AddressService {
         } catch (Exception e) {
             throw new RuntimeException("err" + e.getMessage());
         }
-
     }
 
     public void updateAddress(Address oldAddress, Address newAddress) {
-        oldAddress.setId(newAddress.getId());
         oldAddress.setStreet(newAddress.getStreet());
         oldAddress.setDistrict(newAddress.getDistrict());
         oldAddress.setComplement(newAddress.getComplement());
         oldAddress.setNumber(newAddress.getNumber());
         oldAddress.setPostalCode(newAddress.getPostalCode());
-
-
-}
-
-
-
+ }
 }

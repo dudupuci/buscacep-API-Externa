@@ -2,6 +2,7 @@ package br.com.app.buscacep.models.person.entity;
 
 import br.com.app.buscacep.models.address.entity.Address;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.br.CPF;
@@ -39,12 +40,12 @@ public class Person implements Serializable {
     private LocalDateTime registrationTime = LocalDateTime.now();
     @Column(name = "cpf", unique = true, length = 11)
     @CPF
-    @Size(min = 11, max = 11, message = "CPF inválido!")
     private String cpf;
     @Email
+    @Column(name = "email")
     private String email;
-    @ElementCollection(targetClass = Address.class)
     @OneToMany
+    @JsonIgnore
     private List<Address> addresses;
 
 

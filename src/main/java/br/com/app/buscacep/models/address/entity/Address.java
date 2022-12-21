@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -32,7 +33,7 @@ public class Address implements Serializable {
     @Pattern(regexp = "[0-9]{5}-[0-9]{3}")
     private String postalCode;
 
-    @ManyToOne
     @ElementCollection(targetClass = Person.class)
-    private Person person;
+    @OneToMany
+    private List<Person> persons;
 }
